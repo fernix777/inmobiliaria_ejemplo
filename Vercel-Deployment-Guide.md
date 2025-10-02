@@ -47,14 +47,6 @@ Crea `vercel.json` en la raíz del proyecto:
         {
           "key": "X-Frame-Options",
           "value": "DENY"
-        },
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        }
-      ]
-    }
-  ],
   "rewrites": [
     {
       "source": "/(.*)",
@@ -62,14 +54,6 @@ Crea `vercel.json` en la raíz del proyecto:
     }
   ]
 }
-```
-
----
-
-## 3. Configurar CORS en Supabase (opcional)
-
-Si encuentras problemas de CORS, ve a:
-**Supabase Dashboard** → **Storage** → **Settings** → **Allowed Origins**
 
 Agrega:
 ```
