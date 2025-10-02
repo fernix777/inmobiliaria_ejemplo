@@ -96,36 +96,9 @@ https://*.vercel-preview.app
     "serve": "^14.0.0"
   },
   "engines": {
-    "node": "18.x"
+    "node": ">=18.0.0"
   }
 }
-```
-
----
-
-## 5. Service Worker para producción
-
-El service worker actual funciona bien en Vercel, pero considera estas optimizaciones:
-
-```javascript
-// En sw.js - Agregar dominios de Vercel
-const ALLOWED_HOSTS = [
-  'localhost',
-  '127.0.0.1',
-  'your-project.vercel.app',
-  '*.vercel-preview.app'
-];
-
-function isAllowedHost(url) {
-  return ALLOWED_HOSTS.some(host => {
-    if (host.includes('*')) {
-      const domain = host.replace('*', '.*');
-      return new RegExp(`^https?://(${domain})(:\\d+)?/?`).test(url.href);
-    }
-    return url.hostname === host;
-  });
-}
-```
 
 ---
 
