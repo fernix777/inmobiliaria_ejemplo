@@ -130,6 +130,12 @@ git push origin main
 3. **Configuración automática** (Vercel detectará el proyecto)
 4. **Deploy**
 
+**⚠️ Si aún ves el error de funciones:**
+- Ve a **Vercel Dashboard** → Tu proyecto → **Settings** → **General**
+- Baja hasta **"Build & Development Settings"**
+- Haz clic en **"Clear Build Cache"**
+- Luego haz **"Redeploy"** desde la página del proyecto
+
 ### Paso 4: Configurar dominio personalizado (opcional)
 - **Vercel Dashboard** → **Settings** → **Domains**
 - Agrega tu dominio personalizado
@@ -172,32 +178,20 @@ SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 # Ver logs en Vercel
 vercel logs --follow
 
-# Ver métricas de rendimiento
+# Limpiar caché completamente y redeployar
+vercel --prod --force
+
+# Ver información del proyecto
 vercel inspect
+
+# Limpiar caché específico del proyecto
+vercel cache clear --yes
 ```
 
 ---
 
 ## 8. Solución de problemas comunes
 
-### Problema: "Function Runtimes must have a valid version"
-**Solución:** ✅ **Corregido** - Eliminada la sección `functions` del `vercel.json` ya que no necesitamos funciones serverless.
-
-**Configuración corregida:**
-```json
-{
-  "headers": [
-    {
-      "source": "/(.*)",
-      "headers": [
-        {
-          "key": "X-Frame-Options",
-          "value": "DENY"
-        }
-      ]
-    }
-  ],
-  "rewrites": [
     {
       "source": "/(.*)",
       "destination": "/index.html"

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle de Propiedad | De Brasi Propiedades</title>
+    <!-- Tailwind CSS (Play CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                500: '#2563eb',
+                600: '#1e40af',
+                700: '#1d4ed8'
+              }
+            }
+          }
+        }
+      }
+    </script>
+    
+</head>
+<body>
+    <div id="site-header"></div>
+    <script src="js/includeTemplates.js" defer></script>
+
+    <!-- Property Detail -->
+    <section class="property-detail bg-white py-10">
+        <div class="container mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
+            <div id="property-loading" class="loading-container flex items-center gap-3 text-gray-700">
+                <div class="loading-spinner animate-spin">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v2m0 12v2m8-8h-2M6 12H4m12.364 5.364l-1.414-1.414M7.05 7.05L5.636 5.636m12.728 0l-1.414 1.414M7.05 16.95l-1.414 1.414"/></svg>
+                </div>
+                <p class="text-sm">Cargando información de la propiedad...</p>
+            </div>
+            
+            <div id="property-error" class="error-container bg-red-50 text-red-700 p-4 rounded-md border border-red-200 space-y-2" style="display: none;">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 inline-block mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v4m0 4h.01"/></svg>
+                <h3>Error al cargar la propiedad</h3>
+                <p>No se pudo cargar la información de la propiedad solicitada.</p>
+                <a href="index.html" class="btn inline-block bg-brand-700 text-white px-4 py-2 rounded-md hover:bg-brand-600 transition">Volver al inicio</a>
+            </div>
+            
+            <div id="property-content" class="property-content" style="display: none;">
+                <!-- Esta sección se llenará dinámicamente con JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Properties -->
+    <section class="related-properties bg-gray-50 py-10">
+        <div class="container mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
+            <h2 class="section-title text-2xl font-semibold mb-6">Propiedades similares</h2>
+            <div id="related-properties-grid" class="property-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Esta sección se llenará dinámicamente con JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="property-contact py-10">
+        <div class="container mx-auto max-w-4xl px-4 md:px-6">
+            <div class="contact-form-container bg-white rounded-lg shadow p-6">
+                <h2 class="text-2xl font-semibold">¿Interesado en esta propiedad?</h2>
+                <p class="text-gray-600">Complete el formulario y nos pondremos en contacto a la brevedad.</p>
+                
+                <form id="property-contact-form" class="contact-form grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                    <div class="form-group">
+                        <label for="contact-name" class="block text-sm font-medium mb-1">Nombre completo</label>
+                        <input type="text" id="contact-name" name="name" required class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-brand-500">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="contact-email" class="block text-sm font-medium mb-1">Email</label>
+                        <input type="email" id="contact-email" name="email" required class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-brand-500">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="contact-phone" class="block text-sm font-medium mb-1">Teléfono</label>
+                        <input type="tel" id="contact-phone" name="phone" required class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-brand-500">
+                    </div>
+                    
+                    <div class="form-group md:col-span-2">
+                        <label for="contact-message" class="block text-sm font-medium mb-1">Mensaje</label>
+                        <textarea id="contact-message" name="message" rows="4" required class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-brand-500"></textarea>
+                    </div>
+                    
+                    <input type="hidden" id="property-id" name="property_id">
+                    
+                    <button type="submit" class="btn submit-btn inline-flex items-center justify-center bg-brand-700 hover:bg-brand-600 text-white px-5 py-2.5 rounded-md shadow transition-colors md:col-span-2 w-full md:w-auto">Enviar consulta</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer is injected dynamically -->
+
+    <!-- Supabase SDK y cliente unificado -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabaseConfig.js"></script>
+    <script src="js/supabaseClient.js"></script>
+    
+    <!-- App -->
+    <script src="js/propertyDetail.js" type="module"></script>
+    <div id="site-footer"></div>
+</body>
+</html>
