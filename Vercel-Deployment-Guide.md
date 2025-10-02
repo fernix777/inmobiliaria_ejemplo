@@ -163,6 +163,28 @@ git push origin main
 
 ---
 
+## 5. Optimizaciones para Vercel
+
+### Service Worker optimizado para Vercel:
+El service worker ya está configurado correctamente con:
+- ✅ **Cache versioning** automático (`v5.0.0`)
+- ✅ **Network-first strategy** para contenido dinámico
+- ✅ **Cache-first** para assets estáticos
+- ✅ **Stale-while-revalidate** para imágenes
+
+### Variables de entorno en producción:
+```bash
+# En Vercel Dashboard → Settings → Environment Variables:
+SUPABASE_URL=https://your-project.supabase.co
+SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+```
+
+### Configuración de Node.js:
+- ✅ **Runtime:** `nodejs18.x` (configurado en `vercel.json`)
+- ✅ **Engine:** `">=18.0.0"` (configurado en `package.json`)
+
+---
+
 ## 7. Verificación post-despliegue
 
 ### ✅ Checklist:
@@ -185,8 +207,19 @@ vercel inspect
 
 ## 8. Solución de problemas comunes
 
-### Problema: "Supabase client no disponible"
-**Solución:** Verificar que las variables de entorno estén configuradas correctamente en Vercel.
+### Problema: "Function Runtimes must have a valid version"
+**Solución:** ✅ **Corregido** - Archivo `vercel.json` actualizado con rutas correctas y runtime válido.
+
+**Configuración corregida:**
+```json
+{
+  "functions": {
+    "js/**/*.js": {
+      "runtime": "nodejs18.x"
+    }
+  }
+}
+```
 
 ### Problema: Service Worker no registra
 **Solución:** Asegurar que el archivo `sw.js` esté en la raíz y sea accesible públicamente.

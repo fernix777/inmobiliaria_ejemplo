@@ -1,5 +1,5 @@
 // Service Worker para De Brasi Propiedades
-const CACHE_VERSION = 'v4.0.0'; // ✅ Nueva versión para forzar limpieza completa
+const CACHE_VERSION = 'v5.0.0'; // ✅ Nueva versión para despliegue en Vercel
 const CACHE_NAME = `debrasi-cache-${CACHE_VERSION}`;
 
 // Assets estáticos para cachear
