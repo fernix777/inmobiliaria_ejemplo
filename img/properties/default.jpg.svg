@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <!-- Fondo gris claro -->
+  <rect width="800" height="600" fill="#E0E0E0"/>
+  
+  <!-- Icono de casa simplificado -->
+  <g transform="translate(250, 150)">
+    <!-- Contorno de la casa -->
+    <rect x="50" y="100" width="200" height="150" fill="#FFFFFF" stroke="#CCCCCC" stroke-width="5"/>
+    <!-- Techo -->
+    <polygon points="50,100 150,20 250,100" fill="#CCCCCC" stroke="#BBBBBB" stroke-width="5"/>
+    <!-- Puerta -->
+    <rect x="125" y="175" width="50" height="75" fill="#DDDDDD" stroke="#CCCCCC" stroke-width="3"/>
+    <!-- Ventana -->
+    <rect x="75" y="125" width="50" height="50" fill="#DDDDDD" stroke="#CCCCCC" stroke-width="3"/>
+    <rect x="175" y="125" width="50" height="50" fill="#DDDDDD" stroke="#CCCCCC" stroke-width="3"/>
+  </g>
+  
+  <!-- Texto de imagen no disponible -->
+  <text x="400" y="400" font-family="Arial" font-size="24" text-anchor="middle" fill="#888888">Imagen no disponible</text>
+  
+  <!-- Icono de cámara -->
+  <g transform="translate(370, 430)">
+    <rect x="0" y="0" width="60" height="40" rx="5" fill="#AAAAAA"/>
+    <circle cx="30" cy="20" r="15" fill="#888888"/>
+    <circle cx="30" cy="20" r="8" fill="#AAAAAA"/>
+    <rect x="45" y="5" width="10" height="5" fill="#888888"/>
+  </g>
+</svg>

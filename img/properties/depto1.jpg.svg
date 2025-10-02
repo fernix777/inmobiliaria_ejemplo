@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <!-- Fondo del cielo -->
+  <rect width="800" height="600" fill="#B0E0E6"/>
+  
+  <!-- Edificio -->
+  <rect x="150" y="100" width="500" height="400" fill="#E0E0E0"/>
+  
+  <!-- Ventanas -->
+  <g fill="#87CEEB">
+    <!-- Fila 1 -->
+    <rect x="200" y="150" width="80" height="60" />
+    <rect x="360" y="150" width="80" height="60" />
+    <rect x="520" y="150" width="80" height="60" />
+    
+    <!-- Fila 2 -->
+    <rect x="200" y="250" width="80" height="60" />
+    <rect x="360" y="250" width="80" height="60" />
+    <rect x="520" y="250" width="80" height="60" />
+    
+    <!-- Fila 3 -->
+    <rect x="200" y="350" width="80" height="60" />
+    <rect x="360" y="350" width="80" height="60" />
+    <rect x="520" y="350" width="80" height="60" />
+  </g>
+  
+  <!-- Balcón destacado (departamento en venta) -->
+  <rect x="360" y="350" width="80" height="60" fill="#FFA07A" stroke="#FF6347" stroke-width="3"/>
+  
+  <!-- Entrada del edificio -->
+  <rect x="375" y="500" width="50" height="80" fill="#8B4513"/>
+  
+  <!-- Calle -->
+  <rect y="580" width="800" height="20" fill="#696969"/>
+  
+  <!-- Árboles -->
+  <g>
+    <circle cx="100" cy="550" r="30" fill="#228B22"/>
+    <circle cx="700" cy="550" r="30" fill="#228B22"/>
+  </g>
+  
+  <!-- Texto -->
+  <text x="400" y="50" font-family="Arial" font-size="24" text-anchor="middle" fill="#000">Departamento en San Isidro</text>
+</svg>

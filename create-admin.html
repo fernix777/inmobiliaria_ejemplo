@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Usuario Administrador</title>
+    <!-- Seguridad: evitar indexación de esta página -->
+    <meta name="robots" content="noindex, nofollow">
+    <!-- Tailwind CSS (Play CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                500: '#2563eb',
+                600: '#1e40af',
+                700: '#1d4ed8'
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <!-- Bloquear acceso en producción: solo permitir en entorno local -->
+    <script>
+      (function(){
+        try{
+          var host = window.location.hostname;
+          if (host && host !== 'localhost' && host !== '127.0.0.1') {
+            document.addEventListener('DOMContentLoaded', function(){
+              document.body.innerHTML = '';
+            });
+            alert('Esta página solo está disponible en entorno local.');
+            window.location.replace('index.html');
+          }
+        }catch(e){ /* no-op */ }
+      })();
+    </script>
+    
+</head>
+<body class="bg-gray-50 text-gray-900">
+    <div id="site-header"></div>
+    <script src="js/includeTemplates.js" defer></script>
+
+    <main class="container mx-auto max-w-3xl px-4 md:px-6 lg:px-8 py-6">
+    <h1 class="text-3xl font-bold mb-4">Crear Usuario Administrador</h1>
+    <div class="bg-white shadow rounded-md p-5">
+        <p>Este script creará o actualizará el usuario administrador en Supabase.</p>
+        <p>Email: <strong>admin@debasi.com.ar</strong></p>
+        <p>Contraseña: <strong>admin123</strong></p>
+        
+        <div id="output">
+            <p class="mb-2">Presiona el botón para ejecutar el script:</p>
+            <button id="runScript" class="inline-flex items-center justify-center bg-brand-700 hover:bg-brand-600 text-white px-5 py-2.5 rounded-md shadow transition-colors">Ejecutar Script</button>
+            <pre id="log" class="mt-4 text-sm bg-gray-100 p-3 rounded overflow-x-auto"></pre>
+        </div>
+    </div>
+    </main>
+
+    <!-- Cargar Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabaseConfig.js"></script>
+    <script src="js/supabaseClient.js"></script>
+    
+    <!-- Script para crear el administrador -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const runButton = document.getElementById('runScript');
+            const logElement = document.getElementById('log');
+            
+            // Sobrescribir console.log para mostrar en la página
+            const originalConsoleLog = console.log;
+            const originalConsoleError = console.error;
+            
+            console.log = function(message) {
+                originalConsoleLog.apply(console, arguments);
+                logElement.innerHTML += `<div>${message}</div>`;
+                logElement.scrollTop = logElement.scrollHeight;
+            };
+            
+            console.error = function(message) {
+                originalConsoleError.apply(console, arguments);
+                logElement.innerHTML += `<div class="error">${message}</div>`;
+                logElement.scrollTop = logElement.scrollHeight;
+            };
+            
+            // Cargar el script de creación de administrador
+            runButton.addEventListener('click', async function() {
+                logElement.innerHTML = 'Ejecutando script...\n';
+                
+                try {
+                    // Usar el cliente global inicializado
+                    const client = window.supabaseClient;
+                    if (!client) {
+                        console.error('Supabase client no disponible.');
+                        return;
+                    }
+                    
+                    const email = 'admin@debasi.com.ar';
+                    const password = 'admin123';
+                    
+                    console.log('Creando usuario administrador...');
+                    
+                    try {
+                        // Intentar crear el usuario
+                        const { data, error } = await client.auth.signUp({
+                            email: email,
+                            password: password,
+                            options: {
+                                data: {
+                                    name: 'Administrador',
+                                    role: 'admin'
+                                },
+                                emailRedirectTo: window.location.origin + '/login.html'
+                            }
+                        });
+                        
+                        if (error) throw error;
+                        
+                        if (data.user) {
+                            console.log('✅ Usuario administrador creado exitosamente:', data.user.email);
+                            console.log('Por favor verifica tu correo electrónico para confirmar la cuenta.');
+                        }
+                        
+                    } catch (error) {
+                        // Si el usuario ya existe, intentar iniciar sesión para actualizar la contraseña
+                        if (error.message.includes('already registered')) {
+                            console.log('El usuario ya existe. Actualizando contraseña...');
+                            
+                            const { data: signInData, error: signInError } = await client.auth.signInWithPassword({
+                                email: email,
+                                password: password
+                            });
+                            
+                            if (signInError) {
+                                // Si la contraseña es incorrecta, intentar actualizarla
+                                if (signInError.message.includes('Invalid login credentials')) {
+                                    console.log('Actualizando contraseña...');
+                                    const { data: updateData, error: updateError } = await client.auth.updateUser({
+                                        password: password
+                                    });
+                                    
+                                    if (updateError) throw updateError;
+                                    
+                                    console.log('✅ Contraseña actualizada exitosamente.');
+                                    console.log('Ahora puedes iniciar sesión con las credenciales proporcionadas.');
+                                } else {
+                                    throw signInError;
+                                }
+                            } else {
+                                console.log('✅ Las credenciales son correctas. El usuario ya existe y puede iniciar sesión.');
+                            }
+                        } else {
+                            throw error;
+                        }
+                    }
+                    
+                } catch (error) {
+                    console.error('❌ Error:', error.message);
+                }
+            });
+        });
+    </script>
+    <div id="site-footer"></div>
+</body>
+</html>

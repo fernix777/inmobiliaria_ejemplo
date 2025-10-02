@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Control - De Brasi Propiedades</title>
+    <!-- Tailwind CSS (Play CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                500: '#2563eb',
+                600: '#1e40af',
+                700: '#1d4ed8'
+              }
+            }
+          }
+        }
+      }
+    </script>
+    
+</head>
+<body class="bg-gray-50 text-gray-900">
+    <div id="site-header"></div>
+    <script src="js/includeTemplates.js" defer></script>
+
+    <main class="dashboard-container max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-6">
+        <div class="dashboard-header flex items-center justify-between">
+            <h1 class="text-2xl font-bold">Panel de Control</h1>
+            <div class="text-sm text-gray-600">
+                <span id="userEmail">Cargando...</span>
+            </div>
+        </div>
+
+        <div class="dashboard-actions mt-4">
+            <button id="btnAddProperty" class="btn-primary inline-flex items-center justify-center bg-brand-700 hover:bg-brand-600 text-white px-5 py-2.5 rounded-md shadow transition">Agregar Nueva Propiedad</button>
+        </div>
+
+        <div class="dashboard-content mt-6">
+            <h2 class="text-xl font-semibold">Bienvenido al panel de administración</h2>
+            <p class="text-gray-600">Administra tus propiedades: crea, edita o elimina.</p>
+            <!-- Listado de propiedades -->
+            <div id="propertiesList" class="mt-4"></div>
+        </div>
+
+        <!-- Modal de Propiedad -->
+        <div id="propertyModal" class="modal-overlay fixed inset-0 bg-black/50 z-[1000] hidden flex items-center justify-center p-4">
+            <div class="modal-card bg-white rounded-lg max-w-[900px] w-full shadow-lg overflow-visible" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+                <div class="modal-header flex items-center justify-between p-4 border-b">
+                    <h3 id="modalTitle" class="text-lg font-semibold">Nueva Propiedad</h3>
+                    <button id="btnCloseModal" class="btn-logout text-sm bg-gray-200 px-3 py-1 rounded">Cerrar</button>
+                </div>
+                <div class="modal-body p-4">
+                    <div class="modal-scroll max-h-[70vh] overflow-auto">
+                        <div id="formAlert" class="form-alert hidden p-3 rounded-md bg-red-50 text-red-700 mb-3"></div>
+                        <form id="propertyForm" class="space-y-4">
+                            <div class="form-grid grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="form-group">
+                                    <label for="pf_title" class="block text-sm font-medium text-gray-700">Título</label>
+                                    <input type="text" id="pf_title" required class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-500" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="pf_location" class="block text-sm font-medium text-gray-700">Ubicación</label>
+                                    <input type="text" id="pf_location" required class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-500" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="pf_operation" class="block text-sm font-medium text-gray-700">Operación</label>
+                                    <select id="pf_operation" required class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-500">
+                                        <option value="venta">Venta</option>
+                                        <option value="alquiler">Alquiler</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="pf_type" class="block text-sm font-medium text-gray-700">Tipo</label>
+                                    <select id="pf_type" required class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-500">
+                                        <option value="casa">Casa</option>
+                                        <option value="departamento">Departamento</option>
+                                        <option value="terreno">Terreno</option>
+                                        <option value="oficina">Oficina</option>
+                                        <option value="local">Local</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="pf_price" class="block text-sm font-medium text-gray-700">Precio</label>
+                                    <input type="number" id="pf_price" min="0" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-500" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="pf_currency" class="block text-sm font-medium text-gray-700">Moneda</label>
+                                    <select id="pf_currency" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-500">
+                                        <option value="USD">USD</option>
+                                        <option value="ARS">ARS</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="pf_bedrooms" class="block text-sm font-medium text-gray-700">Habitaciones</label>
+                                    <input type="number" id="pf_bedrooms" min="0" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-500" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="pf_bathrooms" class="block text-sm font-medium text-gray-700">Baños</label>
+                                    <input type="number" id="pf_bathrooms" min="0" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-500" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="pf_area" class="block text-sm font-medium text-gray-700">Superficie (m²)</label>
+                                    <input type="number" id="pf_area" min="0" required class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-500" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="pf_image_url" class="block text-sm font-medium text-gray-700">URL de imagen</label>
+                                    <input type="url" id="pf_image_url" placeholder="https://..." class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-500" />
+                                    <div class="image-preview mt-2 hidden items-center gap-3 bg-gray-50 border border-gray-200 rounded p-2" id="imagePreview" style="display:none;">
+                                        <img id="imagePreviewImg" alt="Previsualización" class="h-16 w-16 object-cover rounded" />
+                                        <span class="status-text text-sm text-gray-600" id="uploadStatus"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="pf_image_file" class="block text-sm font-medium text-gray-700">Imagen (archivo)</label>
+                                    <input type="file" id="pf_image_file" accept="image/*" class="block w-full text-sm text-gray-900 file:mr-4 file:py-2 file:px-3 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-brand-50 file:text-brand-700 hover:file:bg-brand-100" />
+                                    <div class="upload-hints text-xs text-gray-500 mt-1">PNG/JPG, máximo 5MB.</div>
+                                </div>
+                                <div class="form-group grid-span-full">
+                                    <label for="pf_description" class="block text-sm font-medium text-gray-700">Descripción</label>
+                                    <textarea id="pf_description" rows="4" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-500"></textarea>
+                                </div>
+                                <div class="form-group grid-span-full">
+                                    <label for="pf_amenities" class="block text-sm font-medium text-gray-700">Amenidades (separadas por coma)</label>
+                                    <input type="text" id="pf_amenities" placeholder="piscina, gimnasio, balcon" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-500" />
+                                </div>
+                            </div>
+                    </div> <!-- .modal-scroll -->
+                            <div class="form-actions flex items-center gap-3 mt-4">
+                                <button type="submit" class="btn-primary inline-flex items-center justify-center bg-brand-700 hover:bg-brand-600 text-white px-5 py-2.5 rounded-md shadow transition" id="btnSaveProperty">Guardar</button>
+                                <button type="button" class="btn-logout inline-flex items-center justify-center bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-2 rounded-md transition" id="btnCancelProperty">Cancelar</button>
+                            </div>
+                        </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Cargar Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabaseConfig.js"></script>
+    <script src="js/supabaseClient.js"></script>
+    
+    <!-- Script para el dashboard -->
+    <script>
+        // Verificar autenticación al cargar la página
+        document.addEventListener('DOMContentLoaded', async () => {
+            // Verificar que el cliente global de Supabase esté disponible
+            if (typeof window.supabaseClient === 'undefined') {
+                console.error('Error: El cliente de Supabase no se ha inicializado correctamente');
+                return;
+            }
+
+            // Usar el cliente global
+            const supabaseClient = window.supabaseClient;
+            const STORAGE_BUCKET = 'properties-images';
+            const ALLOW_AMENITIES = false; // Cambia a true si agregas la columna 'amenities' en la tabla 'properties'
+            let currentUserId = null;
+            let currentEditingId = null;
+
+            // Verificar sesión
+            const { data: { session } } = await supabaseClient.auth.getSession();
+            
+            if (!session) {
+                // Si no hay sesión, redirigir al login
+                window.location.href = 'login.html';
+                return;
+            }
+
+            // Mostrar el email del usuario
+            const userEmailElement = document.getElementById('userEmail');
+            if (userEmailElement) {
+                userEmailElement.textContent = session.user.email;
+            }
+            currentUserId = session.user.id;
+
+            // Cargar propiedades del usuario
+            await loadUserProperties(supabaseClient, currentUserId);
+
+            // Botones del modal
+            const btnAdd = document.getElementById('btnAddProperty');
+            const btnCloseModal = document.getElementById('btnCloseModal');
+            const btnCancelProperty = document.getElementById('btnCancelProperty');
+            const propertyModal = document.getElementById('propertyModal');
+            const propertyForm = document.getElementById('propertyForm');
+            const formAlert = document.getElementById('formAlert');
+            const btnSave = document.getElementById('btnSaveProperty');
+            const fileInput = document.getElementById('pf_image_file');
+            const urlInput = document.getElementById('pf_image_url');
+            const imagePreview = document.getElementById('imagePreview');
+            const imagePreviewImg = document.getElementById('imagePreviewImg');
+            const uploadStatus = document.getElementById('uploadStatus');
+
+            
+
+            function closeModal() {
+                if (!propertyModal) return;
+                propertyModal.classList.add('hidden');
+                propertyModal.style.display = '';
+            }
+
+            btnAdd?.addEventListener('click', () => openModal(false));
+            btnCloseModal?.addEventListener('click', closeModal);
+            btnCancelProperty?.addEventListener('click', (e) => { e.preventDefault(); closeModal(); });
+
+            // Mejora de accesibilidad: focus en el primer campo al abrir el modal
+            const firstField = document.getElementById('pf_title');
+            const modalOverlay = document.getElementById('propertyModal');
+            function openModal(editing = false, data = null) {
+                document.getElementById('modalTitle').textContent = editing ? 'Editar Propiedad' : 'Nueva Propiedad';
+                modalOverlay.classList.remove('hidden');
+                modalOverlay.style.display = 'flex';
+                // asegurar centrado si falta
+                modalOverlay.style.alignItems = 'center';
+                modalOverlay.style.justifyContent = 'center';
+                if (editing && data) {
+                    currentEditingId = data.id;
+                    document.getElementById('pf_title').value = data.title || '';
+                    document.getElementById('pf_location').value = data.location || '';
+                    document.getElementById('pf_operation').value = data.operation || 'venta';
+                    document.getElementById('pf_type').value = data.property_type || data.type || '';
+                    document.getElementById('pf_price').value = data.price || '';
+                    document.getElementById('pf_currency').value = data.currency || 'USD';
+                    document.getElementById('pf_bedrooms').value = data.bedrooms || '';
+                    document.getElementById('pf_bathrooms').value = data.bathrooms || '';
+                    document.getElementById('pf_area').value = data.area || '';
+                    document.getElementById('pf_image_url').value = data.image_url || '';
+                    document.getElementById('pf_description').value = data.description || '';
+                    const am = Array.isArray(data.amenities) ? data.amenities.join(', ') : (data.amenities || '');
+                    document.getElementById('pf_amenities').value = am;
+                    if (data.image_url) {
+                        imagePreviewImg.src = data.image_url;
+                        imagePreview.style.display = 'flex';
+                    } else {
+                        imagePreview.style.display = 'none';
+                    }
+                } else {
+                    currentEditingId = null;
+                    propertyForm.reset();
+                    imagePreview.style.display = 'none';
+                    clearAlert();
+                }
+                setTimeout(() => firstField?.focus(), 100);
+            }
+
+            // Cerrar modal con Escape
+            document.addEventListener('keydown', (e) => {
+                const isOpen = modalOverlay && !modalOverlay.classList.contains('hidden');
+                if (e.key === 'Escape' && isOpen) {
+                    closeModal();
+                }
+            });
+
+            // Cerrar modal al hacer click fuera de la tarjeta
+            modalOverlay?.addEventListener('click', (e) => {
+                if (e.target === modalOverlay) {
+                    closeModal();
+                }
+            });
+
+            // Validaciones de archivo y previsualización
+            fileInput?.addEventListener('change', () => {
+                clearAlert();
+                if (!fileInput.files || !fileInput.files[0]) return;
+                const file = fileInput.files[0];
+                const maxBytes = 5 * 1024 * 1024; // 5MB
+                if (!file.type.startsWith('image/')) {
+                    showAlert('El archivo debe ser una imagen (PNG/JPG).');
+                    fileInput.value = '';
+                    return;
+                }
+                if (file.size > maxBytes) {
+                    showAlert('La imagen supera el tamaño máximo de 5MB.');
+                    fileInput.value = '';
+                    return;
+                }
+                imagePreviewImg.src = URL.createObjectURL(file);
+                imagePreview.style.display = 'flex';
+                uploadStatus.textContent = '';
+            });
+
+            urlInput?.addEventListener('input', () => {
+                clearAlert();
+                const val = (urlInput.value || '').trim();
+                if (!val) { imagePreview.style.display = 'none'; return; }
+                try {
+                    new URL(val);
+                    imagePreviewImg.src = val;
+                    imagePreview.style.display = 'flex';
+                    uploadStatus.textContent = '';
+                } catch {
+                    // URL inválida: ocultar preview
+                    imagePreview.style.display = 'none';
+                }
+            });
+
+            propertyForm?.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                if (!validateForm()) {
+                    return;
+                }
+                const payload = collectFormData();
+                // Manejo de imagen: si se sube archivo, subimos a Storage y usamos su URL pública
+                const file = fileInput && fileInput.files ? fileInput.files[0] : null;
+                setSaving(true);
+                try {
+                    if (file) {
+                        const path = `${currentUserId}/${Date.now()}-${file.name}`;
+                        const { error: uploadError } = await supabaseClient
+                            .storage
+                            .from(STORAGE_BUCKET)
+                            .upload(path, file, { cacheControl: '3600', upsert: false, contentType: file.type });
+                        if (uploadError) throw uploadError;
+                        const { data: pub } = supabaseClient
+                            .storage
+                            .from(STORAGE_BUCKET)
+                            .getPublicUrl(path);
+                        if (pub && pub.publicUrl) {
+                            payload.image_url = pub.publicUrl;
+                            uploadStatus.textContent = 'Imagen subida correctamente';
+                        }
+                    } else {
+                        // Si no hay archivo, usar el campo de URL si existe
+                        const url = urlInput.value.trim();
+                        payload.image_url = url || null;
+                    }
+                } catch (imgErr) {
+                    console.error('Error al subir la imagen:', imgErr);
+                    showAlert('No se pudo subir la imagen. Verifica que el bucket exista (properties-images) y las políticas. También revisa el tamaño y tipo del archivo.');
+                    setSaving(false);
+                    return;
+                }
+                try {
+                    // Helpers
+                    async function saveOnce(data) {
+                        if (currentEditingId) {
+                            return await supabaseClient
+                                .from('properties')
+                                .update(data)
+                                .eq('id', currentEditingId)
+                                .eq('user_id', currentUserId);
+                        } else {
+                            return await supabaseClient
+                                .from('properties')
+                                .insert([{ ...data, user_id: currentUserId }]);
+                        }
+                    }
+                    function pruneMissingColumn(err, data) {
+                        if (!err || err.code !== 'PGRST204') return false;
+                        const msg = err.message || '';
+                        const m = msg.match(/Could not find the '([^']+)' column/i);
+                        if (m && m[1] && data && Object.prototype.hasOwnProperty.call(data, m[1])) {
+                            delete data[m[1]];
+                            return true;
+                        }
+                        return false;
+                    }
+
+                    // Intentar guardar con poda de columnas inexistentes
+                    let attempt = 0;
+                    let res = await saveOnce(payload);
+                    while (res && res.error && attempt < 8 && pruneMissingColumn(res.error, payload)) {
+                        attempt++;
+                        res = await saveOnce(payload);
+                    }
+                    if (res && res.error) throw res.error;
+                    await loadUserProperties(supabaseClient, currentUserId);
+                    closeModal();
+                } catch (err) {
+                    console.error('Error al guardar la propiedad:', err);
+                    showAlert('Ocurrió un error al guardar la propiedad. Revisa la consola para más detalles.');
+                }
+                setSaving(false);
+            });
+
+            function collectFormData() {
+                const obj = {};
+                const title = document.getElementById('pf_title').value.trim();
+                if (title) obj.title = title;
+                const location = document.getElementById('pf_location').value.trim();
+                if (location) {
+                    obj.location = location;
+                    // Compatibilidad con esquemas que usan 'address' NOT NULL
+                    if (!obj.address) obj.address = location;
+                    // Compatibilidad con esquemas que usan 'city' NOT NULL
+                    if (!obj.city) obj.city = location;
+                    // Compatibilidad con esquemas que usan 'state' NOT NULL
+                    if (!obj.state) obj.state = location;
+                }
+                const operation = document.getElementById('pf_operation').value;
+                if (operation) obj.operation = operation;
+                const type = document.getElementById('pf_type').value;
+                if (type) obj.property_type = type;
+                const price = toNumber(document.getElementById('pf_price').value);
+                if (price !== null) obj.price = price;
+                const currency = document.getElementById('pf_currency').value;
+                if (currency) obj.currency = currency;
+                const bedrooms = toNumber(document.getElementById('pf_bedrooms').value);
+                if (bedrooms !== null) obj.bedrooms = bedrooms;
+                const bathrooms = toNumber(document.getElementById('pf_bathrooms').value);
+                if (bathrooms !== null) obj.bathrooms = bathrooms;
+                const area = toNumber(document.getElementById('pf_area').value);
+                if (area !== null) {
+                    // Enviar ambas claves para compatibilidad con distintos esquemas
+                    obj.area = area;
+                    obj.area_total = area;
+                }
+                const imageUrl = (document.getElementById('pf_image_url').value || '').trim();
+                if (imageUrl) obj.image_url = imageUrl;
+                const desc = (document.getElementById('pf_description').value || '').trim();
+                if (desc) obj.description = desc;
+                const amenitiesCsv = (document.getElementById('pf_amenities').value || '').trim();
+                if (ALLOW_AMENITIES && amenitiesCsv) {
+                    const amenities = amenitiesCsv.split(',').map(s => s.trim()).filter(Boolean);
+                    if (amenities.length) obj.amenities = amenities;
+                }
+                return obj;
+            }
+
+            function toNumber(v) {
+                const n = parseInt(v, 10);
+                return isNaN(n) ? null : n;
+            }
+
+            function validateForm() {
+                const requiredFields = [
+                    { id: 'pf_title', label: 'Título' },
+                    { id: 'pf_location', label: 'Ubicación' },
+                    { id: 'pf_operation', label: 'Operación' },
+                    { id: 'pf_type', label: 'Tipo' },
+                    { id: 'pf_area', label: 'Superficie (m²)' },
+                ];
+                for (const f of requiredFields) {
+                    const el = document.getElementById(f.id);
+                    if (!el) continue;
+                    const val = (el.value || '').toString().trim();
+                    if (!val) {
+                        showAlert(`El campo "${f.label}" es obligatorio.`);
+                        el.focus();
+                        return false;
+                    }
+                }
+                clearAlert();
+                return true;
+            }
+
+            function showAlert(msg) {
+                if (!formAlert) return;
+                formAlert.textContent = msg;
+                formAlert.style.display = 'block';
+            }
+            function clearAlert() {
+                if (!formAlert) return;
+                formAlert.textContent = '';
+                formAlert.style.display = 'none';
+            }
+            function setSaving(saving) {
+                if (!btnSave) return;
+                btnSave.disabled = saving;
+                btnSave.textContent = saving ? 'Guardando...' : 'Guardar';
+            }
+        });
+
+        // Función para cargar las propiedades del usuario
+        async function loadUserProperties(supabaseClient, userId) {
+            try {
+                const { data: properties, error } = await supabaseClient
+                    .from('properties')
+                    .select('*')
+                    .eq('user_id', userId);
+
+                if (error) throw error;
+
+                const propertiesList = document.getElementById('propertiesList');
+                if (properties && properties.length > 0) {
+                    renderPropertiesTable(properties);
+                } else {
+                    propertiesList.innerHTML = '<div class="empty-state">No tienes propiedades cargadas aún.</div>';
+                }
+            } catch (error) {
+                console.error('Error al cargar propiedades:', error);
+                const propertiesList = document.getElementById('propertiesList');
+                propertiesList.innerHTML = '<p>Error al cargar las propiedades. Por favor, intenta nuevamente.</p>';
+            }
+        }
+
+        function renderPropertiesTable(properties) {
+            const container = document.getElementById('propertiesList');
+            container.innerHTML = `
+                <h3>Tus Propiedades</h3>
+                <div class="table-wrapper overflow-x-auto bg-white rounded-md shadow mt-2">
+                    <table class="table w-full text-left">
+                        <thead>
+                            <tr>
+                                <th>Título</th>
+                                <th>Ubicación</th>
+                                <th>Operación</th>
+                                <th>Tipo</th>
+                                <th>Precio</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="propertiesRows"></tbody>
+                    </table>
+                </div>
+            `;
+
+            const tbody = document.getElementById('propertiesRows');
+            tbody.innerHTML = '';
+            properties.forEach((p) => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${p.title || 'Sin título'}</td>
+                    <td>${p.location || '-'}</td>
+                    <td class="text-capitalize">${p.operation || '-'}</td>
+                    <td>${p.property_type || p.type || '-'}</td>
+                    <td>${formatPrice(p.price, p.currency)}</td>
+                    <td>
+                        <div class="actions flex gap-2">
+                            <button class="btn-primary inline-flex items-center justify-center bg-brand-700 hover:bg-brand-600 text-white px-3 py-1.5 rounded-md text-sm" data-action="edit" data-id="${p.id}">Editar</button>
+                            <button class="btn-danger inline-flex items-center justify-center bg-red-600 hover:bg-red-500 text-white px-3 py-1.5 rounded-md text-sm" data-action="delete" data-id="${p.id}">Eliminar</button>
+                        </div>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+
+            // Delegación de eventos para editar/eliminar
+            tbody.addEventListener('click', async (e) => {
+                const target = e.target;
+                if (!(target instanceof Element)) return;
+                const action = target.getAttribute('data-action');
+                const id = target.getAttribute('data-id');
+                if (!action || !id) return;
+
+                const client = window.supabaseClient;
+                if (action === 'edit') {
+                    // Fetch single property and open modal populated
+                    const { data, error } = await client
+                        .from('properties')
+                        .select('*')
+                        .eq('id', id)
+                        .single();
+                    if (error) {
+                        console.error(error);
+                        alert('No se pudo cargar la propiedad.');
+                        return;
+                    }
+                    openModal(true, data);
+                }
+                if (action === 'delete') {
+                    if (!confirm('¿Seguro que deseas eliminar esta propiedad? Esta acción no se puede deshacer.')) return;
+                    const { error } = await client.from('properties').delete().eq('id', id);
+                    if (error) {
+                        console.error(error);
+                        alert('No se pudo eliminar la propiedad.');
+                        return;
+                    }
+                    // Recargar
+                    const { data: sessionData } = await client.auth.getSession();
+                    await loadUserProperties(client, sessionData?.session?.user?.id);
+                }
+            });
+        }
+
+        function formatPrice(price, currency) {
+            if (!price) return 'Consultar';
+            const formatter = new Intl.NumberFormat('es-AR', {
+                style: 'currency',
+                currency: currency || 'USD',
+                maximumFractionDigits: 0
+            });
+            return formatter.format(price);
+        }
+
+        // Función para cerrar sesión
+        async function logout() {
+            try {
+                const client = window.supabaseClient;
+                if (!client) {
+                    console.error('Supabase client no disponible');
+                    return;
+                }
+                const { error } = await client.auth.signOut();
+                if (!error) {
+                    window.location.href = 'login.html';
+                }
+            } catch (error) {
+                console.error('Error al cerrar sesión:', error);
+            }
+        }
+
+        // Hacer la función de logout accesible globalmente
+        window.logout = logout;
+    </script>
+    <div id="site-footer"></div>
+</main>
+</body>
+</html>

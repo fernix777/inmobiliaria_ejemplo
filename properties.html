@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propiedades | De Brasi Propiedades</title>
+    <link rel="canonical" href="https://debrasi.com.ar/properties.html">
+    <meta name="description" content="Busque propiedades en venta y alquiler. Filtros por tipo, operación, ubicación, precio, ambientes y más.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_AR">
+    <meta property="og:title" content="Propiedades | De Brasi Propiedades">
+    <meta property="og:description" content="Encuentre su propiedad ideal en Zona Norte y Buenos Aires con filtros avanzados.">
+    <meta property="og:url" content="https://debrasi.com.ar/properties.html">
+    <meta property="og:image" content="https://debrasi.com.ar/images/slider/1-490-x2.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Propiedades | De Brasi Propiedades">
+    <meta name="twitter:description" content="Venta y alquiler de propiedades en Buenos Aires. Use filtros para encontrar su hogar.">
+    <meta name="twitter:image" content="https://debrasi.com.ar/images/slider/1-490-x2.jpg">
+    <!-- Tailwind CSS (Play CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                500: '#2563eb',
+                600: '#1e40af',
+                700: '#1d4ed8'
+              }
+            }
+          }
+        }
+      }
+    </script>
+    
+</head>
+<body class="bg-gray-50 text-gray-900">
+    <div id="site-header"></div>
+    <script src="js/includeTemplates.js" defer></script>
+
+    <!-- Page Title -->
+    <section class="page-title bg-white border-b">
+        <div class="container mx-auto max-w-7xl px-4 md:px-6 lg:px-8 py-6">
+            <h1 class="text-2xl font-bold">Nuestras Propiedades</h1>
+            <div class="breadcrumbs text-sm text-gray-600"><a class="text-brand-700 hover:underline" href="index.html">Inicio</a> / <span>Propiedades</span></div>
+        </div>
+    </section>
+
+    <!-- Properties Section -->
+    <section class="properties-section py-8">
+        <div class="container mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
+            <div class="properties-layout grid grid-cols-1 lg:grid-cols-4 gap-6">
+                <!-- Sidebar with Filters -->
+                <aside class="properties-sidebar lg:col-span-1">
+                    <div class="filter-container bg-white rounded-lg shadow p-4">
+                        <h3 class="text-lg font-semibold mb-3">Filtros de búsqueda</h3>
+                        <form id="advanced-filter-form" class="advanced-filter-form space-y-4">
+                            <div class="filter-group">
+                                <label for="filter-type" class="block text-sm font-medium mb-1"><svg xmlns="http://www.w3.org/2000/svg" class="inline-block w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg> Tipo de propiedad</label>
+                                <select id="filter-type" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-500">
+                                    <option value="">Todas las propiedades</option>
+                                    <option value="casa">Casa</option>
+                                    <option value="departamento">Departamento</option>
+                                    <option value="terreno">Terreno</option>
+                                    <option value="oficina">Oficina</option>
+                                    <option value="local">Local</option>
+                                </select>
+                            </div>
+                            
+                            <div class="filter-group">
+                                <label for="filter-operation" class="block text-sm font-medium mb-1"><svg xmlns="http://www.w3.org/2000/svg" class="inline-block w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7h16M4 17h16"/></svg> Operación</label>
+                                <select id="filter-operation" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-500">
+                                    <option value="">Todas las operaciones</option>
+                                    <option value="venta">Venta</option>
+                                    <option value="alquiler">Alquiler</option>
+                                </select>
+                            </div>
+                            
+                            <div class="filter-group">
+                                <label for="filter-location" class="block text-sm font-medium mb-1"><svg xmlns="http://www.w3.org/2000/svg" class="inline-block w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 22s8-4.5 8-11a8 8 0 10-16 0c0 6.5 8 11 8 11z"/></svg> Ubicación</label>
+                                <select id="filter-location" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-500">
+                                    <option value="">Todas las ubicaciones</option>
+                                    <option value="acassuso">Acassuso</option>
+                                    <option value="beccar">Beccar</option>
+                                    <option value="martinez">Martínez</option>
+                                    <option value="olivos">Olivos</option>
+                                    <option value="san-isidro">San Isidro</option>
+                                    <option value="tigre">Tigre</option>
+                                </select>
+                            </div>
+                            
+                            <div class="filter-group">
+                                <label for="filter-price-range" class="block text-sm font-medium mb-1"><svg xmlns="http://www.w3.org/2000/svg" class="inline-block w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-4.418 0-8 1.79-8 4s3.582 4 8 4 8-1.79 8-4-3.582-4-8-4z"/></svg> Rango de precio</label>
+                                <select id="filter-price-range" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-500">
+                                    <option value="">Todos los precios</option>
+                                    <option value="0-100000">Hasta U$S 100.000</option>
+                                    <option value="100000-200000">U$S 100.000 - U$S 200.000</option>
+                                    <option value="200000-500000">U$S 200.000 - U$S 500.000</option>
+                                    <option value="500000-1000000">U$S 500.000 - U$S 1.000.000</option>
+                                    <option value="1000000+">Más de U$S 1.000.000</option>
+                                </select>
+                            </div>
+                            
+                            <div class="filter-group">
+                                <label for="filter-bedrooms" class="block text-sm font-medium mb-1"><svg xmlns="http://www.w3.org/2000/svg" class="inline-block w-4 h-4 mr-1" viewBox="0 0 24 24" fill="currentColor"><path d="M4 7a3 3 0 013-3h10a3 3 0 013 3v8h1a1 1 0 110 2H3a1 1 0 110-2h1V7z"/><path d="M6 7v8h12V7a1 1 0 00-1-1H7a1 1 0 00-1 1z"/></svg> Habitaciones</label>
+                                <select id="filter-bedrooms" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-500">
+                                    <option value="">Cualquier cantidad</option>
+                                    <option value="1">1+</option>
+                                    <option value="2">2+</option>
+                                    <option value="3">3+</option>
+                                    <option value="4">4+</option>
+                                    <option value="5">5+</option>
+                                </select>
+                            </div>
+                            
+                            <div class="filter-group">
+                                <label for="filter-bathrooms" class="block text-sm font-medium mb-1"><svg xmlns="http://www.w3.org/2000/svg" class="inline-block w-4 h-4 mr-1" viewBox="0 0 24 24" fill="currentColor"><path d="M7 10a3 3 0 116 0v1h4V8a2 2 0 10-4 0H9a4 4 0 00-4 4v3h14v-2h-2v-1H7v-2z"/></svg> Baños</label>
+                                <select id="filter-bathrooms" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-500">
+                                    <option value="">Cualquier cantidad</option>
+                                    <option value="1">1+</option>
+                                    <option value="2">2+</option>
+                                    <option value="3">3+</option>
+                                    <option value="4">4+</option>
+                                </select>
+                            </div>
+                            
+                            <div class="filter-group">
+                                <label for="filter-area" class="block text-sm font-medium mb-1"><svg xmlns="http://www.w3.org/2000/svg" class="inline-block w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4h4M16 4h4v4M20 16v4h-4M8 20H4v-4"/></svg> Superficie (m²)</label>
+                                <div class="range-inputs flex items-center gap-2">
+                                    <input type="number" id="filter-area-min" placeholder="Mín." class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-500">
+                                    <span class="text-gray-500">-</span>
+                                    <input type="number" id="filter-area-max" placeholder="Máx." class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-500">
+                                </div>
+                            </div>
+                            
+                            <div class="filter-group amenities-filter">
+                                <label class="block text-sm font-medium mb-1"><svg xmlns="http://www.w3.org/2000/svg" class="inline-block w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg> Amenidades</label>
+                                <div class="amenities-options grid grid-cols-2 gap-2 text-sm">
+                                    <label class="flex items-center gap-2"><input type="checkbox" id="amenity-piscina" value="piscina" class="accent-brand-700"><span>Piscina</span></label>
+                                    <label class="flex items-center gap-2"><input type="checkbox" id="amenity-gimnasio" value="gimnasio" class="accent-brand-700"><span>Gimnasio</span></label>
+                                    <label class="flex items-center gap-2"><input type="checkbox" id="amenity-seguridad" value="seguridad" class="accent-brand-700"><span>Seguridad 24hs</span></label>
+                                    <label class="flex items-center gap-2"><input type="checkbox" id="amenity-balcon" value="balcon" class="accent-brand-700"><span>Balcón</span></label>
+                                    <label class="flex items-center gap-2"><input type="checkbox" id="amenity-jardin" value="jardin" class="accent-brand-700"><span>Jardín</span></label>
+                                    <label class="flex items-center gap-2"><input type="checkbox" id="amenity-parrilla" value="parrilla" class="accent-brand-700"><span>Parrilla</span></label>
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="w-full inline-flex items-center justify-center bg-brand-700 hover:bg-brand-600 text-white px-4 py-2.5 rounded-md shadow transition"><i class="fa fa-search mr-2"></i> Aplicar filtros</button>
+                            <button type="reset" class="w-full mt-2 inline-flex items-center justify-center bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-2 rounded-md transition reset-btn"><i class="fa fa-refresh mr-2"></i> Limpiar filtros</button>
+                        </form>
+                    </div>
+                </aside>
+                
+                <!-- Properties Content -->
+                <div class="properties-content lg:col-span-3">
+                    <div class="properties-header flex items-center justify-between mb-4">
+                        <div class="properties-count text-sm text-gray-700">
+                            <span id="properties-total" class="font-semibold">0</span> propiedades encontradas
+                        </div>
+                        <div class="properties-sort text-sm">
+                            <label for="sort-properties" class="mr-2">Ordenar por:</label>
+                            <select id="sort-properties" class="border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-500">
+                                <option value="newest">Más recientes</option>
+                                <option value="price-asc">Precio (menor a mayor)</option>
+                                <option value="price-desc">Precio (mayor a menor)</option>
+                                <option value="area-asc">Superficie (menor a mayor)</option>
+                                <option value="area-desc">Superficie (mayor a menor)</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div id="properties-loading" class="loading-container flex items-center gap-2 text-brand-700">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v2m0 12v2m8-8h-2M6 12H4m12.364 5.364l-1.414-1.414M7.05 7.05L5.636 5.636m12.728 0l-1.414 1.414M7.05 16.95l-1.414 1.414"/></svg>
+                        <p>Cargando propiedades...</p>
+                    </div>
+                    
+                    <div id="properties-grid" class="property-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- Esta sección se llenará dinámicamente con JavaScript -->
+                    </div>
+                    
+                    <div id="no-properties-message" class="no-results-message hidden p-4 rounded-md bg-yellow-50 text-yellow-800 flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 100 20 10 10 0 000-20z"/></svg>
+                        <p class="m-0">No se encontraron propiedades con los criterios seleccionados. Por favor, intente con otros filtros.</p>
+                    </div>
+                    
+                    <div class="pagination mt-6 flex items-center justify-center gap-2" id="pagination">
+                        <!-- Esta sección se llenará dinámicamente con JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div id="site-footer"></div>
+
+    <!-- Supabase SDK y cliente unificado -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabaseConfig.js"></script>
+    <script src="js/supabaseClient.js"></script>
+    
+    <!-- App -->
+    <script src="js/propertiesList.js" type="module"></script>
+</body>
+</html>

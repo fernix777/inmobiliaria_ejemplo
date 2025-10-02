@@ -1,0 +1,48 @@
+{
+  "name": "debrasi-propiedades",
+  "version": "2.0.0",
+  "description": "Sitio web de De Brasi Propiedades - Inmobiliaria en Buenos Aires",
+  "main": "index.html",
+  "scripts": {
+    "build": "npx tailwindcss -i ./input.css -o ./css/styles.css --minify",
+    "build:css": "npx tailwindcss -i ./input.css -o ./css/styles.css --minify",
+    "dev": "npx tailwindcss -i ./input.css -o ./css/styles.css --watch",
+    "start": "serve -s . -p $PORT",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint js/**/*.js",
+    "format": "prettier --write \"**/*.{js,html,css,md}\""
+  },
+  "browserslist": [
+    "> 0.5%",
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
+  ],
+  "keywords": [
+    "real-estate",
+    "inmobiliaria",
+    "propiedades",
+    "buenos-aires",
+    "argentina"
+  ],
+  "author": "De Brasi Propiedades",
+  "license": "MIT",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.57.4"
+  },
+  "devDependencies": {
+    "@tailwindcss/aspect-ratio": "^0.4.2",
+    "@tailwindcss/forms": "^0.5.7",
+    "@tailwindcss/typography": "^0.5.10",
+    "autoprefixer": "^10.4.21",
+    "eslint": "^8.55.0",
+    "http-server": "^14.1.1",
+    "postcss": "^8.5.6",
+    "prettier": "^3.1.1",
+    "serve": "^14.0.0",
+    "tailwindcss": "^3.4.18"
+  },
+  "engines": {
+    "node": "18.x"
+  }
+}

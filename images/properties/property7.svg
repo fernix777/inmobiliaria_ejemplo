@@ -1,0 +1,60 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
+  <!-- Fondo -->
+  <rect width="400" height="300" fill="#f0f0f0"/>
+  
+  <!-- Cielo -->
+  <rect width="400" height="100" fill="#87CEEB"/>
+  
+  <!-- CÃ©sped/JardÃ­n -->
+  <rect y="200" width="400" height="100" fill="#32CD32"/>
+  
+  <!-- Casa tipo piso -->
+  <g>
+    <!-- Estructura principal -->
+    <rect x="100" y="80" width="200" height="140" fill="#FAEBD7" stroke="#8B4513" stroke-width="2"/>
+    
+    <!-- Techo -->
+    <polygon points="100,80 200,40 300,80" fill="#CD853F" stroke="#8B4513" stroke-width="2"/>
+    
+    <!-- Puerta -->
+    <rect x="180" y="170" width="40" height="50" fill="#8B4513"/>
+    <circle cx="190" cy="195" r="3" fill="#FFD700"/> <!-- Picaporte -->
+    
+    <!-- Ventanas grandes (estilo casa de alquiler temporario) -->
+    <rect x="120" y="100" width="50" height="40" fill="#B0E0E6" stroke="#8B4513" stroke-width="2"/>
+    <line x1="120" y1="120" x2="170" y2="120" stroke="#8B4513" stroke-width="2"/>
+    <line x1="145" y1="100" x2="145" y2="140" stroke="#8B4513" stroke-width="2"/>
+    
+    <rect x="230" y="100" width="50" height="40" fill="#B0E0E6" stroke="#8B4513" stroke-width="2"/>
+    <line x1="230" y1="120" x2="280" y2="120" stroke="#8B4513" stroke-width="2"/>
+    <line x1="255" y1="100" x2="255" y2="140" stroke="#8B4513" stroke-width="2"/>
+  </g>
+  
+  <!-- Camino hacia la casa -->
+  <rect x="180" y="220" width="40" height="80" fill="#A9A9A9"/>
+  
+  <!-- Elementos de alquiler temporario -->
+  <g>
+    <!-- Parrilla -->
+    <rect x="320" y="180" width="30" height="20" fill="#696969"/>
+    <rect x="325" y="175" width="20" height="5" fill="#A9A9A9"/>
+    
+    <!-- Piscina pequeÃ±a -->
+    <rect x="50" y="180" width="40" height="20" fill="#00BFFF"/>
+    <rect x="50" y="180" width="40" height="20" fill="none" stroke="#A9A9A9" stroke-width="1"/>
+  </g>
+  
+  <!-- Ãrboles y paisajismo -->
+  <g>
+    <!-- Ãrbol izquierdo -->
+    <rect x="30" y="150" width="10" height="50" fill="#8B4513"/>
+    <circle cx="35" cy="130" r="20" fill="#006400"/>
+    
+    <!-- Ãrbol derecho -->
+    <rect x="360" y="150" width="10" height="50" fill="#8B4513"/>
+    <circle cx="365" cy="130" r="20" fill="#006400"/>
+  </g>
+  
+  <!-- Texto "Beccar" -->
+  <text x="20" y="280" font-family="Arial, sans-serif" font-size="14" fill="#333">Casa en Beccar (Alquiler temporario)</text>
+</svg>

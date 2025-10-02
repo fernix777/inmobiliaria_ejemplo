@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
+  <!-- Fondo -->
+  <rect width="400" height="300" fill="#f0f0f0"/>
+  
+  <!-- Edificio de departamentos -->
+  <rect x="50" y="50" width="300" height="200" fill="#E8E8E8" stroke="#999" stroke-width="2"/>
+  
+  <!-- Ventanas -->
+  <g fill="#4682B4">
+    <!-- Fila 1 -->
+    <rect x="80" y="80" width="40" height="30"/>
+    <rect x="140" y="80" width="40" height="30"/>
+    <rect x="200" y="80" width="40" height="30"/>
+    <rect x="260" y="80" width="40" height="30"/>
+    
+    <!-- Fila 2 -->
+    <rect x="80" y="130" width="40" height="30"/>
+    <rect x="140" y="130" width="40" height="30"/>
+    <rect x="200" y="130" width="40" height="30"/>
+    <rect x="260" y="130" width="40" height="30"/>
+    
+    <!-- Fila 3 -->
+    <rect x="80" y="180" width="40" height="30"/>
+    <rect x="140" y="180" width="40" height="30"/>
+    <rect x="200" y="180" width="40" height="30"/>
+    <rect x="260" y="180" width="40" height="30"/>
+  </g>
+  
+  <!-- Entrada -->
+  <rect x="170" y="220" width="60" height="30" fill="#8B4513"/>
+  
+  <!-- Detalles arquitectónicos -->
+  <rect x="50" y="40" width="300" height="10" fill="#A9A9A9"/>
+  <rect x="40" y="50" width="10" height="200" fill="#A9A9A9"/>
+  <rect x="350" y="50" width="10" height="200" fill="#A9A9A9"/>
+  
+  <!-- Balcones -->
+  <g fill="none" stroke="#999" stroke-width="1">
+    <rect x="75" y="110" width="50" height="5"/>
+    <rect x="135" y="110" width="50" height="5"/>
+    <rect x="195" y="110" width="50" height="5"/>
+    <rect x="255" y="110" width="50" height="5"/>
+    
+    <rect x="75" y="160" width="50" height="5"/>
+    <rect x="135" y="160" width="50" height="5"/>
+    <rect x="195" y="160" width="50" height="5"/>
+    <rect x="255" y="160" width="50" height="5"/>
+    
+    <rect x="75" y="210" width="50" height="5"/>
+    <rect x="135" y="210" width="50" height="5"/>
+    <rect x="195" y="210" width="50" height="5"/>
+    <rect x="255" y="210" width="50" height="5"/>
+  </g>
+  
+  <!-- Acera -->
+  <rect x="0" y="250" width="400" height="50" fill="#A9A9A9"/>
+  
+  <!-- Texto "Acassuso" -->
+  <text x="20" y="280" font-family="Arial, sans-serif" font-size="14" fill="#333">Departamento en Acassuso</text>
+</svg>

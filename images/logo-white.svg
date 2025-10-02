@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="60" viewBox="0 0 200 60">
+  <!-- Fondo del logo -->
+  <rect width="200" height="60" fill="none"/>
+  
+  <!-- Texto "De Brasi" -->
+  <text x="10" y="35" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="#ffffff">De Brasi</text>
+  
+  <!-- Texto "Propiedades" -->
+  <text x="10" y="50" font-family="Arial, sans-serif" font-size="14" fill="#93b7d8">PROPIEDADES</text>
+  
+  <!-- Icono de casa -->
+  <g transform="translate(160, 30)" fill="#93b7d8">
+    <path d="M20,0 L40,15 L35,15 L35,30 L25,30 L25,20 L15,20 L15,30 L5,30 L5,15 L0,15 L20,0z"/>
+  </g>
+</svg>

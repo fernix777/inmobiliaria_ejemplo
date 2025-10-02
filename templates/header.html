@@ -1,0 +1,42 @@
+<!-- Tailwind CDN config: allow quick prototyping via CDN. This block must be before tailwind usage. -->
+<script>
+  if (typeof tailwind === 'undefined') {
+    window.tailwind = window.tailwind || {};
+  }
+  tailwind = tailwind || {};
+  tailwind.config = tailwind.config || {};
+  // For prototyping: make Tailwind utilities !important so they override existing site CSS.
+  // Remove or set to false for production where you will use a proper build.
+  tailwind.config.important = true;
+  tailwind.config.theme = tailwind.config.theme || {};
+  tailwind.config.theme.extend = Object.assign({}, tailwind.config.theme.extend || {}, {
+    colors: {
+      'brand-700': '#274c72',
+      'brand-500': '#45729d',
+      'accent-500': '#c8a45c',
+      'muted-100': '#f5f7fa'
+    }
+  });
+</script>
+<script src="https://cdn.tailwindcss.com"></script>
+
+<header class="header bg-white shadow sticky top-0 z-50">
+  <div class="container header-inner max-w-6xl mx-auto px-4 flex items-center justify-between py-3">
+    <div class="logo flex items-center">
+      <a href="/index.html"><img src="images/debrasi-isologo-ok.png" alt="De Brasi Propiedades" class="h-16"></a>
+    </div>
+    <button class="mobile-menu-toggle text-2xl lg:hidden" aria-label="Abrir menú"><i class="fa fa-bars"></i></button>
+    <nav class="main-nav hidden lg:block">
+      <ul class="flex gap-6 items-center">
+        <li><a href="index.html" class="text-brand-700 font-medium">Inicio</a></li>
+        <li><a href="properties.html" class="text-brand-700 font-medium">Propiedades</a></li>
+        <li><a href="services.html" class="text-brand-700 font-medium">Servicios</a></li>
+        <li><a href="about.html" class="text-brand-700 font-medium">Nosotros</a></li>
+        <li><a href="contact.html" class="text-brand-700 font-medium">Contacto</a></li>
+      </ul>
+    </nav>
+    <div class="header-actions ml-4">
+      <button class="btn-logout bg-red-500 text-white px-3 py-1 rounded-md" onclick="(window.logout || function(){window.location.href='login.html'})()">Cerrar Sesión</button>
+    </div>
+  </div>
+</header>

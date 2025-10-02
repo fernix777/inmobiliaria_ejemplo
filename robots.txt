@@ -1,0 +1,16 @@
+# robots.txt for De Brasi Propiedades
+
+User-agent: *
+Allow: /
+Disallow: /dashboard.html
+Disallow: /create-admin.html
+Disallow: /login.html
+Disallow: /js/
+Disallow: /css/
+Disallow: /*.json$
+
+# Sitemap
+Sitemap: https://debrasi.com.ar/sitemap.xml
+
+# Crawl delay (optional)
+Crawl-delay: 1

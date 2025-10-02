@@ -1,0 +1,9 @@
+@font-face {
+  font-family: 'FontAwesome';
+  src: url('../fonts/fontawesome-webfont.woff2?v=4.6.3') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Incluir el resto del CSS de Font Awesome */
+@import url('font-awesome.min.css');

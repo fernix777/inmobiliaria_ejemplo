@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <!-- Fondo del cielo -->
+  <rect width="800" height="600" fill="#87CEEB"/>
+  
+  <!-- Terreno -->
+  <rect y="300" width="800" height="300" fill="#8B4513"/>
+  
+  <!-- Césped/vegetación -->
+  <rect y="300" width="800" height="20" fill="#7CFC00"/>
+  
+  <!-- Marcadores de límites -->
+  <g fill="#FF0000" stroke="#000" stroke-width="2">
+    <circle cx="100" cy="350" r="10"/>
+    <circle cx="700" cy="350" r="10"/>
+    <circle cx="100" cy="550" r="10"/>
+    <circle cx="700" cy="550" r="10"/>
+  </g>
+  
+  <!-- Líneas de límites -->
+  <g stroke="#FF0000" stroke-width="3" stroke-dasharray="10,5">
+    <line x1="100" y1="350" x2="700" y2="350"/>
+    <line x1="700" y1="350" x2="700" y2="550"/>
+    <line x1="700" y1="550" x2="100" y2="550"/>
+    <line x1="100" y1="550" x2="100" y2="350"/>
+  </g>
+  
+  <!-- Árboles dispersos -->
+  <g>
+    <circle cx="200" cy="400" r="30" fill="#228B22"/>
+    <circle cx="600" cy="450" r="25" fill="#228B22"/>
+    <circle cx="350" cy="500" r="20" fill="#228B22"/>
+  </g>
+  
+  <!-- Cartel de venta -->
+  <g>
+    <rect x="400" y="380" width="120" height="80" fill="#FFFFFF" stroke="#000" stroke-width="2"/>
+    <text x="460" y="420" font-family="Arial" font-size="16" text-anchor="middle" fill="#000">TERRENO</text>
+    <text x="460" y="440" font-family="Arial" font-size="16" text-anchor="middle" fill="#000">EN VENTA</text>
+  </g>
+  
+  <!-- Sol -->
+  <circle cx="700" cy="100" r="50" fill="#FFD700"/>
+  
+  <!-- Texto -->
+  <text x="400" y="50" font-family="Arial" font-size="24" text-anchor="middle" fill="#000">Terreno en Tigre</text>
+</svg>

@@ -1,0 +1,82 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
+  <!-- Fondo -->
+  <rect width="400" height="300" fill="#f5f5f5"/>
+  
+  <!-- Cielo -->
+  <rect width="400" height="150" fill="#87CEEB"/>
+  
+  <!-- RÃ­o/Agua -->
+  <rect y="150" width="400" height="150" fill="#4682B4"/>
+  
+  <!-- Edificio de departamentos -->
+  <g>
+    <!-- Estructura principal -->
+    <rect x="120" y="50" width="160" height="150" fill="#E0E0E0" stroke="#A9A9A9" stroke-width="2"/>
+    
+    <!-- Ventanas -->
+    <g fill="#B0C4DE">
+      <!-- Fila 1 -->
+      <rect x="140" y="70" width="25" height="20"/>
+      <rect x="180" y="70" width="25" height="20"/>
+      <rect x="220" y="70" width="25" height="20"/>
+      
+      <!-- Fila 2 -->
+      <rect x="140" y="100" width="25" height="20"/>
+      <rect x="180" y="100" width="25" height="20"/>
+      <rect x="220" y="100" width="25" height="20"/>
+      
+      <!-- Fila 3 -->
+      <rect x="140" y="130" width="25" height="20"/>
+      <rect x="180" y="130" width="25" height="20"/>
+      <rect x="220" y="130" width="25" height="20"/>
+    </g>
+    
+    <!-- Balcones con parrilla -->
+    <g fill="none" stroke="#A9A9A9" stroke-width="1">
+      <rect x="135" y="90" width="35" height="5"/>
+      <rect x="175" y="90" width="35" height="5"/>
+      <rect x="215" y="90" width="35" height="5"/>
+      
+      <rect x="135" y="120" width="35" height="5"/>
+      <rect x="175" y="120" width="35" height="5"/>
+      <rect x="215" y="120" width="35" height="5"/>
+      
+      <rect x="135" y="150" width="35" height="5"/>
+      <rect x="175" y="150" width="35" height="5"/>
+      <rect x="215" y="150" width="35" height="5"/>
+    </g>
+    
+    <!-- Parrillas en los balcones (simplificadas) -->
+    <g fill="#696969">
+      <rect x="145" y="90" width="10" height="3"/>
+      <rect x="185" y="90" width="10" height="3"/>
+      <rect x="225" y="90" width="10" height="3"/>
+      
+      <rect x="145" y="120" width="10" height="3"/>
+      <rect x="185" y="120" width="10" height="3"/>
+      <rect x="225" y="120" width="10" height="3"/>
+      
+      <rect x="145" y="150" width="10" height="3"/>
+      <rect x="185" y="150" width="10" height="3"/>
+      <rect x="225" y="150" width="10" height="3"/>
+    </g>
+    
+    <!-- Entrada -->
+    <rect x="180" y="180" width="40" height="20" fill="#A9A9A9"/>
+  </g>
+  
+  <!-- Muelle -->
+  <rect x="180" y="200" width="40" height="50" fill="#8B4513"/>
+  
+  <!-- Barcos -->
+  <g>
+    <path d="M50,220 L80,220 L65,235 Z" fill="#FFFFFF"/>
+    <rect x="62" y="220" width="6" height="15" fill="#8B4513"/>
+    
+    <path d="M320,200 L350,200 L335,220 Z" fill="#FFFFFF"/>
+    <rect x="332" y="200" width="6" height="25" fill="#8B4513"/>
+  </g>
+  
+  <!-- Texto "Tigre" -->
+  <text x="20" y="280" font-family="Arial, sans-serif" font-size="14" fill="#FFFFFF">Departamento en Tigre</text>
+</svg>

@@ -1,0 +1,61 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
+  <!-- Fondo -->
+  <rect width="400" height="300" fill="#f0f0f0"/>
+  
+  <!-- Cielo -->
+  <rect width="400" height="120" fill="#87CEEB"/>
+  
+  <!-- CÃ©sped/JardÃ­n -->
+  <rect y="200" width="400" height="100" fill="#228B22"/>
+  
+  <!-- MansiÃ³n/Residencia importante -->
+  <g>
+    <!-- Estructura principal -->
+    <rect x="80" y="80" width="240" height="140" fill="#F5F5DC" stroke="#8B4513" stroke-width="2"/>
+    
+    <!-- Techo -->
+    <polygon points="80,80 200,40 320,80" fill="#8B4513" stroke="#5C3317" stroke-width="2"/>
+    
+    <!-- Columnas -->
+    <rect x="100" y="120" width="10" height="100" fill="#DCDCDC"/>
+    <rect x="150" y="120" width="10" height="100" fill="#DCDCDC"/>
+    <rect x="240" y="120" width="10" height="100" fill="#DCDCDC"/>
+    <rect x="290" y="120" width="10" height="100" fill="#DCDCDC"/>
+    
+    <!-- Puerta principal -->
+    <rect x="180" y="150" width="40" height="70" fill="#8B4513"/>
+    <circle cx="190" cy="185" r="3" fill="#FFD700"/> <!-- Picaporte -->
+    
+    <!-- Ventanas -->
+    <rect x="120" y="100" width="30" height="40" fill="#B0E0E6" stroke="#8B4513" stroke-width="2"/>
+    <line x1="120" y1="120" x2="150" y2="120" stroke="#8B4513" stroke-width="2"/>
+    <line x1="135" y1="100" x2="135" y2="140" stroke="#8B4513" stroke-width="2"/>
+    
+    <rect x="250" y="100" width="30" height="40" fill="#B0E0E6" stroke="#8B4513" stroke-width="2"/>
+    <line x1="250" y1="120" x2="280" y2="120" stroke="#8B4513" stroke-width="2"/>
+    <line x1="265" y1="100" x2="265" y2="140" stroke="#8B4513" stroke-width="2"/>
+  </g>
+  
+  <!-- Camino hacia la casa -->
+  <rect x="180" y="220" width="40" height="80" fill="#A9A9A9"/>
+  
+  <!-- Ãrboles y paisajismo -->
+  <g>
+    <!-- Ãrbol izquierdo grande -->
+    <rect x="40" y="150" width="15" height="50" fill="#8B4513"/>
+    <circle cx="47" cy="120" r="30" fill="#006400"/>
+    
+    <!-- Ãrbol derecho grande -->
+    <rect x="345" y="150" width="15" height="50" fill="#8B4513"/>
+    <circle cx="352" cy="120" r="30" fill="#006400"/>
+    
+    <!-- Arbustos decorativos -->
+    <circle cx="100" cy="210" r="10" fill="#006400"/>
+    <circle cx="130" cy="210" r="10" fill="#006400"/>
+    <circle cx="270" cy="210" r="10" fill="#006400"/>
+    <circle cx="300" cy="210" r="10" fill="#006400"/>
+  </g>
+  
+  <!-- Texto "MartÃ­nez" -->
+  <text x="20" y="280" font-family="Arial, sans-serif" font-size="14" fill="#333">Casa en MartÃ­nez</text>
+</svg>

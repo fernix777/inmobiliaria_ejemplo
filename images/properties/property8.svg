@@ -1,0 +1,74 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
+  <!-- Fondo -->
+  <rect width="400" height="300" fill="#f5f5f5"/>
+  
+  <!-- Cielo -->
+  <rect width="400" height="150" fill="#87CEEB"/>
+  
+  <!-- Edificio con penthouse -->
+  <g>
+    <!-- Estructura principal -->
+    <rect x="100" y="80" width="200" height="220" fill="#E8E8E8" stroke="#A9A9A9" stroke-width="2"/>
+    
+    <!-- Penthouse (Ãºltimo piso destacado) -->
+    <rect x="120" y="80" width="160" height="40" fill="#DCDCDC" stroke="#A9A9A9" stroke-width="2"/>
+    
+    <!-- Ventanas del penthouse (mÃ¡s grandes) -->
+    <rect x="130" y="85" width="40" height="30" fill="#B0C4DE"/>
+    <rect x="180" y="85" width="40" height="30" fill="#B0C4DE"/>
+    <rect x="230" y="85" width="40" height="30" fill="#B0C4DE"/>
+    
+    <!-- Terraza del penthouse -->
+    <rect x="120" y="120" width="160" height="10" fill="#A9A9A9"/>
+    
+    <!-- Ventanas del edificio -->
+    <g fill="#B0C4DE">
+      <!-- Fila 1 -->
+      <rect x="120" y="140" width="25" height="20"/>
+      <rect x="155" y="140" width="25" height="20"/>
+      <rect x="190" y="140" width="25" height="20"/>
+      <rect x="225" y="140" width="25" height="20"/>
+      <rect x="260" y="140" width="25" height="20"/>
+      
+      <!-- Fila 2 -->
+      <rect x="120" y="170" width="25" height="20"/>
+      <rect x="155" y="170" width="25" height="20"/>
+      <rect x="190" y="170" width="25" height="20"/>
+      <rect x="225" y="170" width="25" height="20"/>
+      <rect x="260" y="170" width="25" height="20"/>
+      
+      <!-- Fila 3 -->
+      <rect x="120" y="200" width="25" height="20"/>
+      <rect x="155" y="200" width="25" height="20"/>
+      <rect x="190" y="200" width="25" height="20"/>
+      <rect x="225" y="200" width="25" height="20"/>
+      <rect x="260" y="200" width="25" height="20"/>
+      
+      <!-- Fila 4 -->
+      <rect x="120" y="230" width="25" height="20"/>
+      <rect x="155" y="230" width="25" height="20"/>
+      <rect x="190" y="230" width="25" height="20"/>
+      <rect x="225" y="230" width="25" height="20"/>
+      <rect x="260" y="230" width="25" height="20"/>
+    </g>
+    
+    <!-- Entrada -->
+    <rect x="180" y="270" width="40" height="30" fill="#A9A9A9"/>
+  </g>
+  
+  <!-- Detalles urbanos -->
+  <g>
+    <!-- Acera -->
+    <rect y="290" width="400" height="10" fill="#A9A9A9"/>
+    
+    <!-- Farolas -->
+    <rect x="50" y="250" width="5" height="40" fill="#696969"/>
+    <circle cx="52" cy="250" r="5" fill="#FFFF00"/>
+    
+    <rect x="350" y="250" width="5" height="40" fill="#696969"/>
+    <circle cx="352" cy="250" r="5" fill="#FFFF00"/>
+  </g>
+  
+  <!-- Texto "MartÃ­nez" -->
+  <text x="20" y="280" font-family="Arial, sans-serif" font-size="14" fill="#333">Penthouse en MartÃ­nez</text>
+</svg>

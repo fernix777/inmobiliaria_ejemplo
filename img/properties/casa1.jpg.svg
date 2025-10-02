@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <!-- Fondo del cielo -->
+  <rect width="800" height="600" fill="#87CEEB"/>
+  
+  <!-- Césped -->
+  <rect y="400" width="800" height="200" fill="#7CFC00"/>
+  
+  <!-- Casa -->
+  <rect x="200" y="200" width="400" height="250" fill="#F5F5DC"/>
+  
+  <!-- Techo -->
+  <polygon points="200,200 400,100 600,200" fill="#8B4513"/>
+  
+  <!-- Puerta -->
+  <rect x="350" y="350" width="100" height="100" fill="#8B4513"/>
+  <circle cx="430" cy="400" r="5" fill="#FFD700"/>
+  
+  <!-- Ventanas -->
+  <rect x="250" y="250" width="80" height="80" fill="#ADD8E6"/>
+  <rect x="470" y="250" width="80" height="80" fill="#ADD8E6"/>
+  
+  <!-- Camino -->
+  <rect x="350" y="450" width="100" height="150" fill="#808080"/>
+  
+  <!-- Piscina -->
+  <rect x="550" y="450" width="150" height="80" fill="#00BFFF"/>
+  
+  <!-- Sol -->
+  <circle cx="100" cy="100" r="50" fill="#FFD700"/>
+  
+  <!-- Texto -->
+  <text x="400" y="550" font-family="Arial" font-size="24" text-anchor="middle" fill="#000">Casa Moderna en Martínez</text>
+</svg>
