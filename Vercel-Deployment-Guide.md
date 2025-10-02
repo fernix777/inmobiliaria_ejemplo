@@ -180,7 +180,7 @@ SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 ```
 
 ### Configuración de Node.js:
-- ✅ **Runtime:** `nodejs18.x` (configurado en `vercel.json`)
+- ✅ **No necesita runtime** - Aplicación puramente frontend/estática
 - ✅ **Engine:** `">=18.0.0"` (configurado en `package.json`)
 
 ---
@@ -208,16 +208,28 @@ vercel inspect
 ## 8. Solución de problemas comunes
 
 ### Problema: "Function Runtimes must have a valid version"
-**Solución:** ✅ **Corregido** - Archivo `vercel.json` actualizado con rutas correctas y runtime válido.
+**Solución:** ✅ **Corregido** - Eliminada la sección `functions` del `vercel.json` ya que no necesitamos funciones serverless.
 
 **Configuración corregida:**
 ```json
 {
-  "functions": {
-    "js/**/*.js": {
-      "runtime": "nodejs18.x"
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        }
+      ]
     }
-  }
+  ],
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
 }
 ```
 
